@@ -56,6 +56,30 @@
       margin-top: 30px;
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script data-cfasync="false" async src="https://www.googletagmanager.com/gtag/js?id=G-6LVZ83WXJB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-6LVZ83WXJB');
+  </script>
+  <!-- click tracking -->
+  <script>
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('a'); if(!a) return;
+      if(a.href.startsWith('tel:')) {
+        gtag('event','call_click',{event_category:'engagement'});
+      }
+      if(a.href.includes('wa.me') || a.href.startsWith('viber://')) {
+        gtag('event','messenger_click',{
+          event_category:'engagement',
+          messenger: a.href.includes('wa.me') ? 'whatsapp' : 'viber'
+        });
+      }
+    }, {capture:true});
+  </script>
+  <!-- /click tracking -->  
 </head>
 <body>
 
